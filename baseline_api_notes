@@ -8,12 +8,11 @@ current: 7 / 2.1 baseline!
 kafka/producer/sender.py:        version = self._client.api_version(ProduceRequest, max_version=7)
 
 Fetch (1):
-current: 6
+current: 7
 2.1 => 10
 3.0 => 12
 3.9 => 17
 kafka/consumer/fetcher.py:        version = self._client.api_version(FetchRequest, max_version=4)
-# Requires KIP-227, incremental fetches
 # Requires KIP-320, leader epoch handling / fencing
 #  -> minimal, just send -1 epoch (java clients did this in 2.1 and 2.2)
 #  -> detect log truncation KAFKA-7747 (enabled in v9, recommended for v11 per https://github.com/tulios/kafkajs/issues/1464)
@@ -35,7 +34,7 @@ current: 7 / 2.1 baseline!
 kafka/client_async.py:            api_version = self.api_version(MetadataRequest, max_version=7)
 
 OffsetCommit (8):
-current: 2
+current: 6 / 2.1 baseline!
 2.1 => 6
 3.0 => 8
 3.9 => 9
@@ -43,7 +42,7 @@ kafka/coordinator/consumer.py:        version = self._client.api_version(OffsetC
 # Requires KIP-320, leader epoch handling / fencing
 
 OffsetFetch (9):
-current: 1
+current: 5 / 2.1 baseline!
 2.1 => 5
 3.0 => 8
 3.9 => 9
@@ -87,7 +86,7 @@ kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRe
 kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRequest, max_version=1)
 
 ApiVersions (18):
-current: 1
+current: 2 / 2.1 baseline!
 2.1 => 2
 3.0 => 3
 3.9 => 4
