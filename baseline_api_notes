@@ -8,11 +8,11 @@ current: 7 / 2.1 baseline!
 kafka/producer/sender.py:        version = self._client.api_version(ProduceRequest, max_version=7)
 
 Fetch (1):
-current: 7
+current: 8
 2.1 => 10
 3.0 => 12
 3.9 => 17
-kafka/consumer/fetcher.py:        version = self._client.api_version(FetchRequest, max_version=4)
+kafka/consumer/fetcher.py:        version = self._client.api_version(FetchRequest, max_version=8)
 # Requires KIP-320, leader epoch handling / fencing
 #  -> minimal, just send -1 epoch (java clients did this in 2.1 and 2.2)
 #  -> detect log truncation KAFKA-7747 (enabled in v9, recommended for v11 per https://github.com/tulios/kafkajs/issues/1464)
@@ -23,7 +23,7 @@ current: 3
 2.1 => 4
 3.0 => 7
 3.9 => 9
-kafka/consumer/fetcher.py:        version = self._client.api_version(OffsetRequest, max_version=1)
+kafka/consumer/fetcher.py:        version = self._client.api_version(OffsetRequest, max_version=3)
 # Requires KIP-320, leader epoch handling / fencing
 
 Metadata (3):
@@ -38,7 +38,7 @@ current: 6 / 2.1 baseline!
 2.1 => 6
 3.0 => 8
 3.9 => 9
-kafka/coordinator/consumer.py:        version = self._client.api_version(OffsetCommitRequest, max_version=2)
+kafka/coordinator/consumer.py:        version = self._client.api_version(OffsetCommitRequest, max_version=6)
 # Requires KIP-320, leader epoch handling / fencing
 
 OffsetFetch (9):
@@ -46,7 +46,7 @@ current: 5 / 2.1 baseline!
 2.1 => 5
 3.0 => 8
 3.9 => 9
-kafka/coordinator/consumer.py:        version = self._client.api_version(OffsetFetchRequest, max_version=1)
+kafka/coordinator/consumer.py:        version = self._client.api_version(OffsetFetchRequest, max_version=5)
 # Requires KIP-320, leader epoch handling / fencing
 
 FindCoordinator(10):
@@ -54,36 +54,36 @@ current: 2 / 2.1 baseline!
 2.1 => 2
 3.0 => 4
 3.9 => 6
-kafka/coordinator/base.py:        request = GroupCoordinatorRequest[0](self.group_id)
+kafka/coordinator/base.py:        version = self._client.api_version(FindCoordinatorRequest, max_version=2)
 
 JoinGroup(11):
 current: 3 / 2.1 baseline!
 2.1 => 3
 3.0 => 7
 3.9 => 9
-kafka/coordinator/base.py:        version = self._client.api_version(JoinGroupRequest, max_version=2)
+kafka/coordinator/base.py:        version = self._client.api_version(JoinGroupRequest, max_version=3)
 
 Heartbeat (12)
 current: 2 / 2.1 baseline!
 2.1 => 2
 3.0 => 4
 3.9 => 4
-kafka/coordinator/base.py:        version = self._client.api_version(HeartbeatRequest, max_version=1)
+kafka/coordinator/base.py:        version = self._client.api_version(HeartbeatRequest, max_version=2)
 
 LeaveGroup (13):
 current: 2 / 2.1 baseline!
 2.1 => 2
 3.0 => 4
 3.9 => 5
-kafka/coordinator/base.py:                version = self._client.api_version(LeaveGroupRequest, max_version=1)
+kafka/coordinator/base.py:                version = self._client.api_version(LeaveGroupRequest, max_version=2)
 
 SyncGroup (14):
 current: 2 / 2.1 baseline!
 2.1 => 2
 3.0 => 5
 3.9 => 5
-kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRequest, max_version=1)
-kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRequest, max_version=1)
+kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRequest, max_version=2)
+kafka/coordinator/base.py:        version = self._client.api_version(SyncGroupRequest, max_version=2)
 
 ApiVersions (18):
 current: 2 / 2.1 baseline!
